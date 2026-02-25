@@ -2,13 +2,10 @@ package me.Asi.petCoreEngine;
 
 import me.Asi.petCoreEngine.commands.EnDisCommand;
 import me.Asi.petCoreEngine.commands.ZoneDebugCommand;
-import me.Asi.petCoreEngine.gui.GuiManager;
-import me.Asi.petCoreEngine.gui.PetCollectionGui;
 import me.Asi.petCoreEngine.managers.PlayerManager;
 import me.Asi.petCoreEngine.managers.coin.CoinManager;
 import me.Asi.petCoreEngine.managers.coin.CoinSpawnManager;
 import me.Asi.petCoreEngine.managers.coin.VisualManager;
-import me.Asi.petCoreEngine.managers.menu.MenuListener;
 import me.Asi.petCoreEngine.managers.pet.PetConfigManager;
 import me.Asi.petCoreEngine.managers.pet.PetManager;
 import me.Asi.petCoreEngine.managers.pet.PetVisualManager;
@@ -26,9 +23,6 @@ public final class PetCoreEngine extends JavaPlugin {
     private PetManager petManager;
     private ZoneManager zoneManager;
     private CoinSpawnManager coinSpawnManager;
-
-    private GuiManager guiManager;
-    private PetCollectionGui petCollectionGui;
 
     private boolean active;
 
@@ -56,10 +50,6 @@ public final class PetCoreEngine extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (guiManager != null) {
-            guiManager.shutdown();
-        }
-
         if (playerManager != null) {
             playerManager.saveAll();
         }
@@ -94,10 +84,6 @@ public final class PetCoreEngine extends JavaPlugin {
         this.petVisualManager = new PetVisualManager(this);
         this.petConfigManager = new PetConfigManager(this);
         this.petManager = new PetManager(this, petConfigManager, petVisualManager);
-
-        this.guiManager = new GuiManager(this);
-        this.petCollectionGui = new PetCollectionGui(this);
-        new MenuListener(this);
     }
 
     public static PetCoreEngine get() {
@@ -126,14 +112,6 @@ public final class PetCoreEngine extends JavaPlugin {
 
     public ZoneManager getZoneManager() {
         return zoneManager;
-    }
-
-    public GuiManager getGuiManager() {
-        return guiManager;
-    }
-
-    public PetCollectionGui getPetCollectionGui() {
-        return petCollectionGui;
     }
 
     public boolean getActive() {
