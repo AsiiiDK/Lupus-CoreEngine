@@ -1,0 +1,37 @@
+zones:
+  spawn:
+    world: world
+    min:
+      x: -50
+      y: -60
+      z: -50
+    max:
+      x: 50
+      y: -70
+      z: 50
+    max-coins: 15
+    spawn-per-tick: 2
+    respawn-delay: 3
+    hp:
+      min: 50
+      max: 150
+    reward:
+      min: 5
+      max: 20
+
+
+tiers:
+  small:
+    weight: 60
+    hp-multiplier: 1
+    reward-multiplier: 1
+
+  medium:
+    weight: 30
+    hp-multiplier: 2
+    reward-multiplier: 2
+
+  big:
+    weight: 10
+    hp-multiplier: 5
+    reward-multiplier: 5

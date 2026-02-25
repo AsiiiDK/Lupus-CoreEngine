@@ -1,0 +1,15 @@
+name: PetCoreEngine
+version: '1.0'
+main: me.Asi.petCoreEngine.PetCoreEngine
+api-version: '1.21'
+authors: [ Asi_777 ]
+description: Core pet system
+commands:
+  spawncoin:
+    description: Spawn a test coin
+    usage: /spawncoin <hp> <reward>
+    permission: petsim.admin
+  zonedebug:
+    description: zone debug info
+  zoneactive:
+    description: zone debug active
