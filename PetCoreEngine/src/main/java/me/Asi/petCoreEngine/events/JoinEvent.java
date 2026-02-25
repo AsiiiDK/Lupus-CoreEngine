@@ -3,8 +3,11 @@ package me.Asi.petCoreEngine.events;
 import me.Asi.petCoreEngine.PetCoreEngine;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 
+/**
+ * Legacy event class kept for compatibility.
+ * Pet join/quit behavior is now handled in PetManager.
+ */
 public class JoinEvent implements Listener {
 
     private final PetCoreEngine plugin;

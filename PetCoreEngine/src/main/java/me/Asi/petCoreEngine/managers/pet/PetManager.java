@@ -12,7 +12,11 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
 
-public class PetManager {
+import java.util.*;
+
+public class PetManager implements Listener {
+
+    private static final double PET_TARGET_SEARCH_RADIUS = 16.0;
 
     private static final double PET_TARGET_SEARCH_RADIUS = 16.0;
 
@@ -167,6 +171,7 @@ public class PetManager {
             if (!data.equipPet(pet)) {
                 break;
             }
+            data.addPet(new Pet(petId, 1, "starter"));
         }
     }
 

@@ -145,7 +145,7 @@ public final class PetCoreEngine extends JavaPlugin {
         return this.active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public ZoneManager getZoneManager() {
+        return zoneManager;
     }
 }
