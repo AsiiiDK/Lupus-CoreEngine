@@ -58,23 +58,6 @@ public class PetManager implements Listener {
         visualManager.removePets(event.getPlayer());
     }
 
-    public void syncPlayer(Player player) {
-        PlayerData data = plugin.getPlayerManager().get(player.getUniqueId());
-        if (data == null) {
-            return;
-        }
-
-        applyProgression(data);
-        data.ensureValidEquippedState();
-
-        if (data.getEquippedPets().isEmpty()) {
-            visualManager.removePets(player);
-            return;
-        }
-
-        visualManager.syncPlayerPets(player, data.getEquippedPets(), configManager);
-    }
-
     private void startTask() {
         combatTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tickCombat, 2L, 2L);
     }

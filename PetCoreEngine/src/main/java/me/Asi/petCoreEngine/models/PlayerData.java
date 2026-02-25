@@ -1,6 +1,9 @@
 package me.Asi.petCoreEngine.models;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 
 public class PlayerData {
 
@@ -16,9 +19,6 @@ public class PlayerData {
 
     // Equipped pets (subset of pets)
     private final List<Pet> equippedPets = new ArrayList<>();
-
-    // Favorite pet ids for UI sorting/highlight
-    private final Set<UUID> favoritePetIds = new HashSet<>();
 
     private int maxEquipped = 3;
 
@@ -82,40 +82,14 @@ public class PlayerData {
         return true;
     }
 
-    public boolean unequipPet(Pet pet) {
-        return equippedPets.remove(pet);
-    }
-
-    public boolean isFavorite(Pet pet) {
-        return pet != null && favoritePetIds.contains(pet.getUniqueId());
-    }
-
-    public boolean toggleFavorite(Pet pet) {
-        if (pet == null || !pets.contains(pet)) {
-            return false;
-        }
-
-        UUID id = pet.getUniqueId();
-        if (favoritePetIds.contains(id)) {
-            favoritePetIds.remove(id);
-            return false;
-        }
-
-        favoritePetIds.add(id);
-        return true;
+    public void unequipPet(Pet pet) {
+        equippedPets.remove(pet);
     }
 
     public void ensureValidEquippedState() {
-        Set<Pet> owned = new HashSet<>(pets);
-        equippedPets.removeIf(pet -> !owned.contains(pet));
+        equippedPets.removeIf(pet -> !pets.contains(pet));
         while (equippedPets.size() > maxEquipped) {
             equippedPets.remove(equippedPets.size() - 1);
         }
-
-        Set<UUID> validIds = new HashSet<>();
-        for (Pet pet : pets) {
-            validIds.add(pet.getUniqueId());
-        }
-        favoritePetIds.retainAll(validIds);
     }
 }
