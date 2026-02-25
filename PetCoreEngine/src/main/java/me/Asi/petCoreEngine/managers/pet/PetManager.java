@@ -175,7 +175,6 @@ public class PetManager implements Listener {
             if (!data.equipPet(pet)) {
                 break;
             }
-            data.addPet(new Pet(petId, 1, "starter"));
         }
     }
 
