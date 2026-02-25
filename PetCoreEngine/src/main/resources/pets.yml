@@ -1,0 +1,41 @@
+settings:
+  # Starting number of equip slots.
+  base-max-equipped: 3
+  # Additional equip slots per rebirth level.
+  extra-equipped-per-rebirth: 1
+  # Hard cap (hypermax profile) - cannot exceed 30.
+  hypermax-max-equipped: 30
+
+  # Granted to first-time players (if they own no pets yet).
+  starter-pets:
+    - dog
+    - cat
+    - bunny
+
+pets:
+  dog:
+    display-name: "Dog"
+    texture-url: "http://textures.minecraft.net/texture/26629dfa3fdfef04054024e0156d5e19da5401b1911f59b4bd3982685fe54c2c"
+    base-damage: 8.0
+    level-damage-multiplier: 2.0
+    attack-range: 1.8
+    attack-cooldown-ticks: 14
+    move-speed: 0.42
+
+  cat:
+    display-name: "Cat"
+    texture-url: "http://textures.minecraft.net/texture/ef03316f6f6eab26f5a2fcfbe7f84f7f2c3f7649ba4f0f5866848f2f8ecf62da"
+    base-damage: 6.0
+    level-damage-multiplier: 2.6
+    attack-range: 1.7
+    attack-cooldown-ticks: 11
+    move-speed: 0.48
+
+  bunny:
+    display-name: "Bunny"
+    texture-url: "http://textures.minecraft.net/texture/7d8f2f9d8fb6ed6fbbf8e35ab6f6f17e08f10bbce9f5e25e4c7f96f4af7031a3"
+    base-damage: 5.0
+    level-damage-multiplier: 1.8
+    attack-range: 2.0
+    attack-cooldown-ticks: 8
+    move-speed: 0.56

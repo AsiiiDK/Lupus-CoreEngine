@@ -76,8 +76,7 @@ public class CoinSpawnManager {
             int toSpawn =
                     Math.min(
                             zone.getSpawnPerTick(),
-                            zone.getMaxCoins()
-                                    - zone.getActiveCoins()
+                            scaledMax - zone.getActiveCoins()
                     );
 
             for (int i = 0; i < toSpawn; i++) {
@@ -94,7 +93,6 @@ public class CoinSpawnManager {
 
                 plugin.getCoinManager()
                         .spawnCoin(loc, hp, reward, zone);
-                plugin.getLogger().info("Ticking zone: " + zone.getId());
             }
 
             zoneCooldowns.put(
