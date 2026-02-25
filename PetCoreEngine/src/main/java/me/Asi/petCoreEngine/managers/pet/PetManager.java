@@ -8,15 +8,15 @@ import me.Asi.petCoreEngine.models.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
 
+import java.util.*;
+
 public class PetManager implements Listener {
+
+    private static final double PET_TARGET_SEARCH_RADIUS = 16.0;
 
     private static final double PET_TARGET_SEARCH_RADIUS = 16.0;
 
@@ -34,13 +34,10 @@ public class PetManager implements Listener {
         this.configManager = configManager;
         this.visualManager = visualManager;
 
-        Bukkit.getPluginManager().registerEvents(this, plugin);
         startTask();
     }
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
+    public void handleJoin(Player player) {
         PlayerData data = plugin.getPlayerManager().get(player.getUniqueId());
 
         if (data == null) {
@@ -53,9 +50,25 @@ public class PetManager implements Listener {
         visualManager.syncPlayerPets(player, data.getEquippedPets(), configManager);
     }
 
-    @EventHandler
-    public void onQuit(PlayerQuitEvent event) {
-        visualManager.removePets(event.getPlayer());
+    public void handleQuit(Player player) {
+        visualManager.removePets(player);
+    }
+
+    public void syncPlayer(Player player) {
+        PlayerData data = plugin.getPlayerManager().get(player.getUniqueId());
+        if (data == null) {
+            return;
+        }
+
+        applyProgression(data);
+        data.ensureValidEquippedState();
+
+        if (data.getEquippedPets().isEmpty()) {
+            visualManager.removePets(player);
+            return;
+        }
+
+        visualManager.syncPlayerPets(player, data.getEquippedPets(), configManager);
     }
 
     private void startTask() {
@@ -158,6 +171,7 @@ public class PetManager implements Listener {
             if (!data.equipPet(pet)) {
                 break;
             }
+            data.addPet(new Pet(petId, 1, "starter"));
         }
     }
 

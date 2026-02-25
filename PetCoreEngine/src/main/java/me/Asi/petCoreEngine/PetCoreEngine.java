@@ -2,6 +2,8 @@ package me.Asi.petCoreEngine;
 
 import me.Asi.petCoreEngine.commands.EnDisCommand;
 import me.Asi.petCoreEngine.commands.ZoneDebugCommand;
+import me.Asi.petCoreEngine.events.JoinEvent;
+import me.Asi.petCoreEngine.events.LeaveEvent;
 import me.Asi.petCoreEngine.gui.GuiManager;
 import me.Asi.petCoreEngine.gui.PetCollectionGui;
 import me.Asi.petCoreEngine.managers.PlayerManager;
@@ -56,6 +58,10 @@ public final class PetCoreEngine extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (guiManager != null) {
+            guiManager.shutdown();
+        }
+
         if (playerManager != null) {
             playerManager.saveAll();
         }
@@ -87,8 +93,6 @@ public final class PetCoreEngine extends JavaPlugin {
         this.zoneManager = new ZoneManager(this);
         this.coinSpawnManager = new CoinSpawnManager(this);
 
-        this.petManager = new PetManager(this, petConfigManager, petVisualManager);
-
         this.petVisualManager = new PetVisualManager(this);
         this.petConfigManager = new PetConfigManager(this);
         this.petManager = new PetManager(this, petConfigManager, petVisualManager);
@@ -96,6 +100,9 @@ public final class PetCoreEngine extends JavaPlugin {
         this.guiManager = new GuiManager(this);
         this.petCollectionGui = new PetCollectionGui(this);
         new MenuListener(this);
+
+        getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
+        getServer().getPluginManager().registerEvents(new LeaveEvent(this), this);
     }
 
     public static PetCoreEngine get() {
@@ -126,10 +133,6 @@ public final class PetCoreEngine extends JavaPlugin {
         return zoneManager;
     }
 
-    public PetManager getPetmanager() {
-        return petManager;
-    }
-
     public GuiManager getGuiManager() {
         return guiManager;
     }
@@ -142,7 +145,7 @@ public final class PetCoreEngine extends JavaPlugin {
         return this.active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public ZoneManager getZoneManager() {
+        return zoneManager;
     }
 }
