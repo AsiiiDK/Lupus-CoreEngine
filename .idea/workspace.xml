@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="785a0c81-498b-4db2-9c82-38febde1971c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/PetCoreEngine-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/PetCoreEngine-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/PetCoreEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/PetCoreEngine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/events/JoinEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/events/JoinEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/events/LeaveEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/events/LeaveEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/PlayerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/PlayerManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/coin/CoinManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/coin/CoinManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/coin/CoinSpawnManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/coin/CoinSpawnManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/coin/VisualManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/coin/VisualManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/pet/PetManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/pet/PetManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/pet/PetVisualManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/managers/pet/PetVisualManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/models/Pet.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/models/Pet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/models/PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/classes/me/Asi/petCoreEngine/models/PlayerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PetCoreEngine/target/original-PetCoreEngine-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/PetCoreEngine/target/original-PetCoreEngine-1.0.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AsiiiDK"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AsiiiDK/Lupus-CoreEngine.git",
+    "accountId": "5ae5d5cf-5cc2-445c-9687-ce87426c718e"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="3AAw2KcA2w1NhP7yzrDhzyeaQyL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.PetCoreEngine [clean,package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="785a0c81-498b-4db2-9c82-38febde1971c" name="Changes" comment="" />
+      <created>1772048476167</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772048476167</updated>
+    </task>
+    <servers />
+  </component>
+</project>
