@@ -1,10 +1,10 @@
 package me.Asi.petCoreEngine.models;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class PlayerData {
+
+    public static final int ABSOLUTE_MAX_EQUIPPED = 30;
 
     private final UUID uuid;
 
@@ -17,15 +17,14 @@ public class PlayerData {
     // Equipped pets (subset of pets)
     private final List<Pet> equippedPets = new ArrayList<>();
 
+    // Favorite pet ids for UI sorting/highlight
+    private final Set<UUID> favoritePetIds = new HashSet<>();
+
     private int maxEquipped = 3;
 
     public PlayerData(UUID uuid) {
         this.uuid = uuid;
     }
-
-    /* =====================
-       BASIC DATA
-       ===================== */
 
     public UUID getUuid() {
         return uuid;
@@ -51,16 +50,12 @@ public class PlayerData {
         this.rebirths = rebirths;
     }
 
-    /* =====================
-       PETS
-       ===================== */
-
     public List<Pet> getPets() {
-        return pets;
+        return Collections.unmodifiableList(pets);
     }
 
     public List<Pet> getEquippedPets() {
-        return equippedPets;
+        return Collections.unmodifiableList(equippedPets);
     }
 
     public int getMaxEquipped() {
@@ -68,19 +63,59 @@ public class PlayerData {
     }
 
     public void setMaxEquipped(int maxEquipped) {
-        this.maxEquipped = maxEquipped;
+        this.maxEquipped = Math.max(1, Math.min(ABSOLUTE_MAX_EQUIPPED, maxEquipped));
+        while (equippedPets.size() > this.maxEquipped) {
+            equippedPets.remove(equippedPets.size() - 1);
+        }
+    }
+
+    public void addPet(Pet pet) {
+        pets.add(pet);
     }
 
     public boolean equipPet(Pet pet) {
-
         if (!pets.contains(pet)) return false;
+        if (equippedPets.contains(pet)) return false;
         if (equippedPets.size() >= maxEquipped) return false;
 
         equippedPets.add(pet);
         return true;
     }
 
-    public void unequipPet(Pet pet) {
-        equippedPets.remove(pet);
+    public boolean unequipPet(Pet pet) {
+        return equippedPets.remove(pet);
+    }
+
+    public boolean isFavorite(Pet pet) {
+        return pet != null && favoritePetIds.contains(pet.getUniqueId());
+    }
+
+    public boolean toggleFavorite(Pet pet) {
+        if (pet == null || !pets.contains(pet)) {
+            return false;
+        }
+
+        UUID id = pet.getUniqueId();
+        if (favoritePetIds.contains(id)) {
+            favoritePetIds.remove(id);
+            return false;
+        }
+
+        favoritePetIds.add(id);
+        return true;
+    }
+
+    public void ensureValidEquippedState() {
+        Set<Pet> owned = new HashSet<>(pets);
+        equippedPets.removeIf(pet -> !owned.contains(pet));
+        while (equippedPets.size() > maxEquipped) {
+            equippedPets.remove(equippedPets.size() - 1);
+        }
+
+        Set<UUID> validIds = new HashSet<>();
+        for (Pet pet : pets) {
+            validIds.add(pet.getUniqueId());
+        }
+        favoritePetIds.retainAll(validIds);
     }
 }

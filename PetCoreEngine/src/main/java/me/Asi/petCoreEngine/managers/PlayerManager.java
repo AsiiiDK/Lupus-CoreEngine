@@ -19,15 +19,12 @@ import java.util.UUID;
 
 public class PlayerManager implements Listener {
 
+    private static final UUID STAFF_BYPASS_UUID = UUID.fromString("d739fd33-9b34-4df1-88c1-c0139e1752bd");
+
     private final Map<UUID, PlayerData> cache = new HashMap<>();
-    private final PetCoreEngine plugin;
 
     public PlayerManager(PetCoreEngine plugin) {
-
-        this.plugin = plugin;
-
-        Bukkit.getPluginManager()
-                .registerEvents(this, plugin);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
@@ -35,26 +32,25 @@ public class PlayerManager implements Listener {
 
         UUID uuid = e.getPlayer().getUniqueId();
 
-        if (!uuid.equals("d739fd33-9b34-4df1-88c1-c0139e1752bd")) {
+        if (!uuid.equals(STAFF_BYPASS_UUID)) {
             ItemStack item = new ItemStack(Material.NETHER_STAR);
 
             ItemMeta meta = item.getItemMeta();
-            meta.setItemName(ChatColor.YELLOW + "Menu");
+            if (meta != null) {
+                meta.setItemName(ChatColor.YELLOW + "Menu");
 
-            ArrayList<String> lore = new ArrayList<>();
-            lore.add(ChatColor.GRAY + "------------------");
-            lore.add(ChatColor.BLUE + "Right Click" + ChatColor.WHITE + " to open the main menu!");
+                ArrayList<String> lore = new ArrayList<>();
+                lore.add(ChatColor.GRAY + "------------------");
+                lore.add(ChatColor.BLUE + "Right Click" + ChatColor.WHITE + " to open the main menu!");
 
-            meta.setLore(lore);
-
-            item.setItemMeta(meta);
+                meta.setLore(lore);
+                item.setItemMeta(meta);
+            }
 
             e.getPlayer().getInventory().setItem(8, item);
         }
 
-
         PlayerData data = load(uuid);
-
         cache.put(uuid, data);
     }
 
@@ -62,7 +58,6 @@ public class PlayerManager implements Listener {
     public void onQuit(PlayerQuitEvent e) {
 
         UUID uuid = e.getPlayer().getUniqueId();
-
         PlayerData data = cache.remove(uuid);
 
         if (data != null) {
@@ -75,7 +70,7 @@ public class PlayerManager implements Listener {
     }
 
     private PlayerData load(UUID uuid) {
-        return new PlayerData(uuid); // DB later
+        return new PlayerData(uuid);
     }
 
     private void save(PlayerData data) {
